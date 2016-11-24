@@ -42,7 +42,7 @@ function extract_id_from_inserted_document($document)
 function generate_index_name($document)
 {
     if (is_object($document)) {
-        $document = get_object_vars($document);
+        $document = $document instanceof \ArrayObject ? $document->getArrayCopy() : get_object_vars($document);
     }
 
     if ( ! is_array($document)) {
@@ -71,7 +71,7 @@ function generate_index_name($document)
 function is_first_key_operator($document)
 {
     if (is_object($document)) {
-        $document = get_object_vars($document);
+        $document = $document instanceof \ArrayObject ? $document->getArrayCopy() : get_object_vars($document);
     }
 
     if ( ! is_array($document)) {
